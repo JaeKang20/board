@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 class MemoryMemberRepositoryTest {
-    //테스트는 각각 독립적으로 실행되어야 한다. 테스트 순서에 의존관계가 있는 것은 좋은 테스트가 아니다.
+    //테스트는 각각 독립적으로 실행되어야 한다. 테스트       순서에 의존관계가 있는 것은 좋은 테스트가 아니다.
     MemoryMemberRepository repository = new MemoryMemberRepository();
     @AfterEach
     public void afterEach() {
