@@ -37,7 +37,7 @@ public class HelloController {
 
     @GetMapping("hello-api")
     @ResponseBody
-    public Hello helloApi(@RequestParam("name")String name){
+    public Hello helloApi(@RequestParam("name")String name){//HelloDto를 전달.
         Hello hello = new Hello();
     hello.setName(name);
     return hello;
