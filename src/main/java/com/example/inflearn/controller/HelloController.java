@@ -1,6 +1,7 @@
 package com.example.inflearn.controller;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequiredArgsConstructor
 public class HelloController {
 //MVC에서 Controller를 맡은 부분입니다.
 
