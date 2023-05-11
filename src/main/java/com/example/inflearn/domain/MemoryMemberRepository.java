@@ -29,10 +29,6 @@ public class MemoryMemberRepository implements MemberRepository{
                 .filter(member -> member.getName().equals(name))
                 .findAny();
     }
-    public void clearStroe(){
-        store.clear();
-    }
-
     public void clearStore() {
         store.clear();
     }
