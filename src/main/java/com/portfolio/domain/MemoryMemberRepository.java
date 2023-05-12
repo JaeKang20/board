@@ -1,4 +1,4 @@
-package com.example.inflearn.domain;
+package com.portfolio.domain;
 
 import org.springframework.stereotype.Repository;
 

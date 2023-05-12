@@ -1,7 +1,7 @@
-package com.example.inflearn.service;
+package com.portfolio.service;
 
-import com.example.inflearn.domain.Member;
-import com.example.inflearn.domain.MemoryMemberRepository;
+import com.portfolio.domain.Member;
+import com.portfolio.domain.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

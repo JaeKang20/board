@@ -1,9 +1,8 @@
-package com.example.inflearn.controller;
+package com.portfolio.controller;
 
-import com.example.inflearn.domain.Member;
-import com.example.inflearn.service.MemberService;
+import com.portfolio.domain.Member;
+import com.portfolio.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -22,13 +22,16 @@ dependencies {
 	implementation 'org.projectlombok:lombok:1.18.26'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation('com.h2database:h2')
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 	annotationProcessor('org.projectlombok:lombok:')
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.h2database:h2:1.4.200'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.testcontainers:junit-jupiter'
 	testAnnotationProcessor('org.projectlombok:lombok:')
-	runtimeOnly 'com.h2database:h2:1.4.200'
+
 }
 
 dependencyManagement {

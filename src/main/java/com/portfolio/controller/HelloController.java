@@ -1,4 +1,4 @@
-package com.example.inflearn.controller;
+package com.portfolio.controller;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
-package com.example.inflearn.service;
+package com.portfolio.service;
 
-import com.example.inflearn.domain.Member;
-import com.example.inflearn.domain.MemberRepository;
+import com.portfolio.domain.Member;
+import com.portfolio.domain.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
