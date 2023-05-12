@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="utf-8">
-  <link th:href="@{/css/bootstrap.min.css}"
-        href="css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<header th:replace="layout/header"></header>
 <div class="container" style="max-width: 600px">
   <div class="py-5 text-center">
     <h2>Community</h2>
@@ -30,5 +23,4 @@
   </div>
   <hr class="my-4">
 </div> <!-- /container -->
-</body>
-</html>
+<footer th:replace="layout/footer"></footer>
