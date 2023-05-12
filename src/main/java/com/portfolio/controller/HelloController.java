@@ -15,8 +15,8 @@ public class HelloController {
 //MVC에서 Controller를 맡은 부분입니다.
 
     @GetMapping("hello")
-    public String hello(Model model){
-        model.addAttribute("data","Hello!");
+    public String hello(Model model) {
+        model.addAttribute("data", "Hello!");
         return "hello";
     }
     @GetMapping("hello-mvc")//템플릿 엔진

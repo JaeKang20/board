@@ -1,7 +1,7 @@
 package com.portfolio.service;
 
 import com.portfolio.domain.Member;
-import com.portfolio.domain.MemoryMemberRepository;
+import com.portfolio.domain.MemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,10 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MemberServiceTest {
     MemberService memberService;
-    MemoryMemberRepository memberRepository;
+    MemberRepository memberRepository;
     @BeforeEach
     public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
         memberService = new MemberService(memberRepository);
     }
     /*@BeforeEach : 각 테스트 실행 전에 호출된다.
@@ -24,7 +23,7 @@ public class MemberServiceTest {
 
     @AfterEach
     public void afterEach() {
-        memberRepository.clearStore();
+        memberRepository.deleteAll();
     }
     @Test
     public void 회원가입() throws Exception {
