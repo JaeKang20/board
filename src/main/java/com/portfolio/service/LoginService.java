@@ -6,18 +6,16 @@ import com.portfolio.web.dto.LoginDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class LoginService {
     private final MemberRepository memberRepository;
 
-    @Transactional
+
     public Member login(LoginDto loginDto) {
-        Optional<Member> member = memberRepository.findByMemberIdAndMemberPassword(loginDto.getLoginId(), loginDto.getPassword());
-        return member.orElse(null);
+        return memberRepository.findByMemberId(loginDto.getLoginId())
+                .filter(m -> m.getMemberPassword().equals(loginDto.getPassword()))
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 아이디 또는 패스워드입니다."));
     }
 
 }

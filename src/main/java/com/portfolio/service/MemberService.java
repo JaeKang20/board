@@ -1,6 +1,8 @@
 package com.portfolio.service;
 
 
+
+import com.portfolio.domain.MemberSearchCond;
 import com.portfolio.web.dto.MemberSaveDto;
 import com.portfolio.domain.Member;
 import com.portfolio.domain.MemberRepository;
@@ -29,24 +31,15 @@ public class MemberService {
         return savedMember.getId(); // 저장된 회원의 ID 반환
     }
 
+    private void validateDuplicateMember(MemberSaveDto memberSaveDto) {
+        Optional<Member> existingMember = memberRepository.findByMemberId(memberSaveDto.toEntity().getMemberId());
+        if (existingMember.isPresent()) {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        }
+    }
+
     /*
      * 전체 회원 조회 서비스 로직
      * */
-    private void validateDuplicateMember(MemberSaveDto memberSaveDto) {
-        memberRepository.findByMemberId(memberSaveDto.toEntity().getMemberId())
-                .ifPresent(m -> {
-                    throw new IllegalStateException("이미 존재하는 회원입니다.");
-                });
-    }
-
-
-    public List<Member> findMembers(){
-        return memberRepository.findAll();
-    }
-
-    public Optional<Member> findOne(Long memberId){
-        return memberRepository.findById(memberId);
-    }
-
 
 }

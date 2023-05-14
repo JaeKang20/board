@@ -1,6 +1,7 @@
 package com.portfolio.web.dto;
 
 import com.portfolio.domain.Member;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
@@ -12,8 +13,9 @@ public class MemberSaveDto {
     private String memberPassword;
     private String nickname;
     private String emailAddress;
-    private String joinDate;
 
+
+    @Builder
     public MemberSaveDto(String memberId, String memberPassword, String nickname, String emailAddress){
         this.memberId = memberId;
         this.memberPassword = memberPassword;
@@ -27,7 +29,7 @@ public class MemberSaveDto {
                 .memberPassword(memberPassword)
                 .nickname(nickname)
                 .emailAddress(emailAddress)
-                .joinDate(LocalDateTime.now().toString())
+                .joinDate(LocalDateTime.now().toString())// Dto 객체를 엔티티로 변환할 때, 회원 가입 시간을 현재 시간으로 설정
                 .build();
     }
 }
