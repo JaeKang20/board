@@ -105,6 +105,24 @@
   </div>
 
 </div> <!-- /container -->
-<!-- jascript 작성 x-->
+<script>
+  // JavaScript를 사용하여 내용을 동적으로 설정
+  var contentDiv = document.getElementById('content');
+  var content = contentDiv.getAttribute('content');
+  contentDiv.innerText = content;
+  const toggleBtns = document.querySelectorAll('.reply-toggle-btn');
+  toggleBtns.forEach(toggleBtn => {
+    toggleBtn.addEventListener('click', () => {
+      const replyForm = toggleBtn.nextElementSibling;
+      if (replyForm.style.display === 'none') {
+        replyForm.style.display = 'block';
+      } else {
+        replyForm.style.display = 'none';
+      }
+    });
+  });
+
+
+</script>
 </body>
 </html>
