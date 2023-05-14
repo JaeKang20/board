@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Getter
+@Getter@Setter
 @NoArgsConstructor
 @Entity
 public class Member {
@@ -34,6 +34,7 @@ public class Member {
     @NotNull
     @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$", message = "이메일 형식에 맞지 않습니다.")
     private String emailAddress;
+
     private String joinDate;
 
     @Builder

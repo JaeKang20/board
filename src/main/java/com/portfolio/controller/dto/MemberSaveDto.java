@@ -5,30 +5,33 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 
 //웹 등록 화면에서 데이터를 전달받을 폼 객체 (dto)
-@Getter
-@NoArgsConstructor
+// MemberSaveDto 클래스
 public class MemberSaveDto {
     private String memberId;
     private String memberPassword;
     private String nickname;
     private String emailAddress;
+    private String joinDate;
 
-    @Builder
     public MemberSaveDto(String memberId, String memberPassword, String nickname, String emailAddress){
         this.memberId = memberId;
         this.memberPassword = memberPassword;
         this.nickname = nickname;
         this.emailAddress = emailAddress;
     }
-    public Member toEntity(){
+
+    public Member toEntity() {
         return Member.builder()
                 .memberId(memberId)
                 .memberPassword(memberPassword)
                 .nickname(nickname)
                 .emailAddress(emailAddress)
+                .joinDate(LocalDateTime.now().toString())
                 .build();
     }
-
 }
+
