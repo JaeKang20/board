@@ -1,9 +1,6 @@
-package com.portfolio.controller.dto;
+package com.portfolio.web.dto;
 
 import com.portfolio.domain.Member;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 

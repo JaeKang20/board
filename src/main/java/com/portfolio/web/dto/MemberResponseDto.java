@@ -1,4 +1,4 @@
-package com.portfolio.controller.dto;
+package com.portfolio.web.dto;
 
 import com.portfolio.domain.Member;
 import lombok.Getter;

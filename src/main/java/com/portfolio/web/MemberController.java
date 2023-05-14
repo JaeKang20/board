@@ -1,6 +1,6 @@
-package com.portfolio.controller;
+package com.portfolio.web;
 
-import com.portfolio.controller.dto.MemberSaveDto;
+import com.portfolio.web.dto.MemberSaveDto;
 import com.portfolio.domain.Member;
 import com.portfolio.service.MemberService;
 import groovy.util.logging.Slf4j;
@@ -11,9 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.time.LocalDateTime;
-import java.util.List;
 @Slf4j
 @Controller
 @RequiredArgsConstructor

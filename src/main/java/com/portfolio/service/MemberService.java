@@ -1,7 +1,7 @@
 package com.portfolio.service;
 
 
-import com.portfolio.controller.dto.MemberSaveDto;
+import com.portfolio.web.dto.MemberSaveDto;
 import com.portfolio.domain.Member;
 import com.portfolio.domain.MemberRepository;
 

@@ -1,4 +1,4 @@
-package com.portfolio.controller;
+package com.portfolio.web;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
