@@ -25,7 +25,6 @@ import javax.validation.Valid;
 public class LoginController {
 
     private final LoginService loginService;
-    private final SessionManager sessionManager;
 
     @GetMapping("/login")
     public String loginForm(@ModelAttribute("loginForm") LoginDto loginDto) {
@@ -46,6 +45,7 @@ public class LoginController {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다");
             return "login/loginForm";
         }
+
 
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
-
 @Slf4j
 @RestController
 public class SessionInfoController {

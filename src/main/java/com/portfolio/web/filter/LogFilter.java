@@ -9,9 +9,7 @@ import java.util.UUID;
 
 @Slf4j
 public class LogFilter implements Filter {
-
-
-
+//요청과 응답에 대한 로깅을 수행하는 필터
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

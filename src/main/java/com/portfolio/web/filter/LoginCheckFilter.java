@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+/*
+* 인증 체크를 수행하는 필터입니다. doFilter 메서드에서 인증이 필요한 경로인지 확인하고,
+* 세션에서 로그인 정보를 확인하여 인증되지 않은 사용자의 경우 로그인 페이지로 리디렉션합니다.
+ */
 @Slf4j
 public class LoginCheckFilter implements Filter {
     private static final String[] whitelist = {"/", "/home", "/members/add", "/login", "/logout", "/css/*","/h2-console/**"};
