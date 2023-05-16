@@ -10,6 +10,10 @@ import java.util.List;
 
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Long>, QuerydslPredicateExecutor<Board> {
-    List<Board> findAllByTitleContaining(String title);
-    Page<Board> findAllByMember_NicknameContaining(String nickname, Pageable pageable);
+
+    Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable);
+
+    Page<Board> findByTitleContaining(String title, Pageable pageable);
+
+    Page<Board> findByMember_Nickname(String nickname, Pageable pageable);
 }
