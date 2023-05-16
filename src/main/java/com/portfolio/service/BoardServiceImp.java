@@ -1,7 +1,9 @@
 package com.portfolio.service;
 
+import com.portfolio.config.SessionConst;
 import com.portfolio.domain.Board;
 import com.portfolio.domain.BoardRepository;
+import com.portfolio.domain.Member;
 import com.portfolio.web.dto.BoardSearchCond;
 import com.portfolio.web.dto.BoardUpdateDto;
 import org.springframework.util.StringUtils;
@@ -10,10 +12,16 @@ import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+
 @RequiredArgsConstructor
 @Service
 public class BoardServiceImp implements BoardService{
@@ -27,17 +35,26 @@ public class BoardServiceImp implements BoardService{
 
         return boardRepository.save(board);
     }
+    public Page<Board> getBoards(Pageable pageable) {
+        return boardRepository.findAll(pageable);
+    }
+
 
 
     @Override
     public void update(Long boardId, BoardUpdateDto updateParam) {
-
+        Board findBoard = findById(boardId).orElseThrow();
+        findBoard.setUpdateDate(LocalDateTime.now().toString());
+        findBoard.setTitle(updateParam.getTitle());
+        findBoard.setContent(updateParam.getContent());
     }
 
     @Override
     public Optional<Board> findById(Long id) {
-        return Optional.empty();
+        return boardRepository.findById(id);
     }
+
+
 
     @Override
     public Page<Board> findBoards(BoardSearchCond boardSearchCond, Pageable pageable) {
@@ -52,12 +69,50 @@ public class BoardServiceImp implements BoardService{
         }
     }
 
+
     @Override
     public void delete(Long boardId) {
+        boardRepository.deleteById(boardId);
+    }
+    public boolean addLike(Long boardId, Member loginMember) {
+        Board board = boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+        if (isAlreadyLiked(loginMember, boardId)) {
+            return false;
+        }
+        addLikedBoard(loginMember, boardId);
+        board.setBoardLike(board.getBoardLike() + 1);
+        boardRepository.save(board);
+        return true;
 
     }
-
-    public Page<Board> getBoards(Pageable pageable) {
-        return  null;
+    public boolean isAlreadyLiked(Member loginMember, Long boardId) {
+        HttpSession session = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getSession();
+        Set<Long> likedBoardIds = (Set<Long>) session.getAttribute(SessionConst.LIKED_BOARD_IDS);
+        if (likedBoardIds != null && likedBoardIds.contains(boardId)) {
+            return true;
+        }
+        return false;
     }
+
+    public void addLikedBoard(Member loginMember, Long boardId) {
+        HttpSession session = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getSession(true);
+        Set<Long> likedBoardIds = (Set<Long>) session.getAttribute(SessionConst.LIKED_BOARD_IDS);
+        if (likedBoardIds == null) {
+            likedBoardIds = new HashSet<>();
+        }
+        likedBoardIds.add(boardId);
+        session.setAttribute(SessionConst.LIKED_BOARD_IDS, likedBoardIds);
+    }
+
+    public void increaseViewCount(Long boardId) {
+        Board board = boardRepository.findById(boardId).get();
+        board.setBoardViewCount(board.getBoardViewCount() + 1);
+    }
+
+    public void decreaseViewCount(Long boardId) {
+        Board board = boardRepository.findById(boardId).get();
+        board.setBoardViewCount(board.getBoardViewCount() - 1);
+    }
+
+
 }
