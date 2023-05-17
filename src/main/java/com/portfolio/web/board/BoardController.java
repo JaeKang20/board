@@ -6,7 +6,7 @@ import com.portfolio.domain.*;
 import com.portfolio.service.*;
 import com.portfolio.web.dto.BoardSearchCond;
 import com.portfolio.web.dto.ReplyUpdateDto;
-import com.portfolio.web.dto.RereplyUpdateDto;
+
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,16 +25,18 @@ import java.util.List;
 @RequestMapping("/boards")
 public class BoardController {
     private final BoardService boardService;
-    private final BoardServiceImp boardServiceImp;
+
     private final ReplyService replyService;
-    private final ReplyServiceImpl replyServiceImpl;
-    private final RereplyService rereplyService;
 
     @GetMapping
     public String boards(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
                          @ModelAttribute("boardSearch") BoardSearchCond boardSearchCond,
                          Model model,@PageableDefault(size = 5, direction = Sort.Direction.DESC, sort = "boardId") Pageable pageable) {
+        // 로그인한 회원 정보를 세션에서 가져옵니다.
+        // 세션에 로그인 정보가 없을 수도 있으므로 required = false로 설정합니다.
         Page<Board> boardPage = boardService.findBoards(boardSearchCond, pageable);
+        // 게시판을 페이징하여 가져옵니다.
+        // boardService를 사용하여 boardSearchCond와 pageable을 이용하여 검색 결과를 가져옵니다.
         model.addAttribute("loginMember", loginMember);
         model.addAttribute("boards", boardPage);
         return "boards";
@@ -47,18 +49,16 @@ public class BoardController {
     }
 
     @GetMapping("/{boardId}")
-    public String board(@PathVariable long boardId, @ModelAttribute ReplySearchCond replySearchCond, @ModelAttribute RereplySearchCond rereplySearchCond, Model model) {
+    public String board(@PathVariable long boardId, @ModelAttribute ReplySearchCond replySearchCond, Model model) {
         Board board = boardService.findById(boardId).get();
         List<Reply> reply = replyService.findReply(replySearchCond);
-        List<Rereply> rereplys = rereplyService.findRereplys(rereplySearchCond);
+
         ReplyUpdateDto form = new ReplyUpdateDto();
-        RereplyUpdateDto rereplyForm = new RereplyUpdateDto();
+
         model.addAttribute("replyForm", form);
         model.addAttribute("board", board);
         model.addAttribute("reply", reply);
-        model.addAttribute("rereplyForm", rereplyForm);
-        model.addAttribute("rereply", rereplys);
-        boardServiceImp.increaseViewCount(boardId);
+        boardService.increaseViewCount(boardId);
         return "board";
     }
     @GetMapping("/{boardId}/edit")
@@ -66,7 +66,7 @@ public class BoardController {
                            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
 
 
-        Board board = boardServiceImp.findById(boardId).get();
+        Board board = boardService.findById(boardId).get();
         if (loginMember.getMemberId() != board.getMember().getMemberId()) {
             return "redirect:/error/403";
         }

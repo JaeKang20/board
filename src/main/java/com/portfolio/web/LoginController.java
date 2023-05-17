@@ -1,7 +1,7 @@
 package com.portfolio.web;
 
 import com.portfolio.config.SessionConst;
-import com.portfolio.config.session.SessionManager;
+
 import com.portfolio.web.dto.LoginDto;
 import com.portfolio.domain.Member;
 import com.portfolio.service.LoginService;
@@ -36,7 +36,6 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             return "login/loginForm";
         }
-
         Member loginMember = loginService.login(loginDto);
 
         log.info("login? {}", loginMember);
@@ -45,8 +44,6 @@ public class LoginController {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다");
             return "login/loginForm";
         }
-
-
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
         return "redirect:/boards";
