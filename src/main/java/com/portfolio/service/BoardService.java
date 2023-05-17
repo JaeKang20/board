@@ -6,6 +6,7 @@ import com.portfolio.domain.BoardRepository;
 import com.portfolio.domain.Member;
 import com.portfolio.web.dto.BoardSearchCond;
 import com.portfolio.web.dto.BoardUpdateDto;
+import com.portfolio.web.dto.IncreaseViewCountDto;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import lombok.RequiredArgsConstructor;
@@ -105,10 +106,11 @@ public class BoardService {
     }
 
     public void increaseViewCount(Long boardId) {
-        Board board = boardRepository.findById(boardId).get();
+        Board board = boardRepository.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
         board.setBoardViewCount(board.getBoardViewCount() + 1);
+        boardRepository.save(board);
     }
-
     public void decreaseViewCount(Long boardId) {
         Board board = boardRepository.findById(boardId).get();
         board.setBoardViewCount(board.getBoardViewCount() - 1);

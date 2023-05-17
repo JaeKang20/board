@@ -38,7 +38,8 @@ public class Board {
 
 
 @Builder
-    public Board(Long boardId, Member member, String title, String content, String registerDate, String updateDate, String deleteDate, int boardlike) {
+    public Board(Long boardId, Member member, String title, String content, String registerDate, String updateDate, String deleteDate, int boardLike
+,int boardViewCount) {
         this.boardId = boardId;
         this.member = member;
         this.title = title;
@@ -46,6 +47,7 @@ public class Board {
         this.registerDate = registerDate;
         this.updateDate = updateDate;
         this.deleteDate = deleteDate;
-        this.boardLike = boardlike;
+        this.boardLike = boardLike;
+        this.boardViewCount = boardViewCount;
     }
 }

@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -25,9 +26,6 @@ import java.util.List;
 @RequestMapping("/boards")
 public class BoardController {
     private final BoardService boardService;
-
-    private final ReplyService replyService;
-
     @GetMapping
     public String boards(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
                          @ModelAttribute("boardSearch") BoardSearchCond boardSearchCond,
@@ -47,20 +45,15 @@ public class BoardController {
         model.addAttribute("form", boardSearchCond);
         return "addForm";
     }
-
     @GetMapping("/{boardId}")
-    public String board(@PathVariable long boardId, @ModelAttribute ReplySearchCond replySearchCond, Model model) {
-        Board board = boardService.findById(boardId).get();
-        List<Reply> reply = replyService.findReply(replySearchCond);
-
-        ReplyUpdateDto form = new ReplyUpdateDto();
-
-        model.addAttribute("replyForm", form);
+    public String board(@PathVariable long boardId, Model model) {
+        Board board = boardService.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
         model.addAttribute("board", board);
-        model.addAttribute("reply", reply);
         boardService.increaseViewCount(boardId);
         return "board";
     }
+
     @GetMapping("/{boardId}/edit")
     public String editForm(@PathVariable Long boardId, Model model,
                            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
@@ -73,4 +66,6 @@ public class BoardController {
         model.addAttribute("board", board);
         return "editForm";
     }
+
+
 }

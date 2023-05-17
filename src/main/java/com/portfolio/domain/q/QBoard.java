@@ -4,7 +4,6 @@ package com.portfolio.domain.q;
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
 import com.portfolio.domain.Board;
-import com.portfolio.domain.Reply;
 import com.querydsl.core.types.dsl.*;
 
 import com.querydsl.core.types.PathMetadata;
@@ -39,7 +38,6 @@ public class QBoard extends EntityPathBase<Board> {
 
     public final StringPath registerDate = createString("registerDate");
 
-    public final ListPath<Reply, QReply> replyList = this.<Reply, QReply>createList("replyList", Reply.class, QReply.class, PathInits.DIRECT2);
 
     public final StringPath title = createString("title");
 

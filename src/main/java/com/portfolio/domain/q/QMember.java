@@ -5,8 +5,6 @@ import static com.querydsl.core.types.PathMetadataFactory.*;
 
 import com.portfolio.domain.Board;
 import com.portfolio.domain.Member;
-import com.portfolio.domain.Reply;
-import com.portfolio.domain.Rereply;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.*;
 
@@ -40,9 +38,6 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath nickname = createString("nickname");
 
-    public final ListPath<Reply, QReply> replies = this.<Reply, QReply>createList("replies", Reply.class, QReply.class, PathInits.DIRECT2);
-
-    public final ListPath<Rereply, QRereply> rereplyList = this.<Rereply, QRereply>createList("rereplyList", Rereply.class, QRereply.class, PathInits.DIRECT2);
 
     public QMember(String variable) {
         super(Member.class, forVariable(variable));

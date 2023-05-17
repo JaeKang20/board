@@ -26,7 +26,7 @@ public class BoardApiController {
 
     private final BoardService boardService;
 
-    private final ReplyService replyService;
+
 
     @PostMapping(value = "/add", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<?> writeBoard(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
@@ -91,21 +91,7 @@ public class BoardApiController {
     }
 
 
-    @PostMapping("/{boardId}/reply")
-    public String addReply(RedirectAttributes redirectAttributes, @PathVariable Long boardId,
-                           @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
-                           HttpServletRequest request,
-                           @RequestParam(name = "parentId", required = false) Long parentId,
-                           @ModelAttribute("replyForm") ReplyUpdateDto reply) {
-        Optional<Board> findBoard = boardService.findById(boardId);
-        Reply addReply = new Reply();
-        addReply.setReplyContent(reply.getContent());
-        addReply.setReplyWriter(loginMember);
-        addReply.setBoard(findBoard.get());
 
-        replyService.save(addReply);
-        return "redirect:/boards/{boardId}/";
-    }
 
 
 }
