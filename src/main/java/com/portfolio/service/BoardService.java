@@ -6,7 +6,7 @@ import com.portfolio.domain.BoardRepository;
 import com.portfolio.domain.Member;
 import com.portfolio.web.dto.BoardSearchCond;
 import com.portfolio.web.dto.BoardUpdateDto;
-import com.portfolio.web.dto.IncreaseViewCountDto;
+
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import lombok.RequiredArgsConstructor;

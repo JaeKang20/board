@@ -5,7 +5,6 @@ import com.portfolio.domain.*;
 
 import com.portfolio.service.*;
 import com.portfolio.web.dto.BoardSearchCond;
-import com.portfolio.web.dto.ReplyUpdateDto;
 
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
@@ -16,9 +15,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
