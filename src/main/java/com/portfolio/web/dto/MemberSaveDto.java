@@ -15,13 +15,6 @@ public class MemberSaveDto {
     private String emailAddress;
 
 
-    @Builder
-    public MemberSaveDto(String memberId, String memberPassword, String nickname, String emailAddress){
-        this.memberId = memberId;
-        this.memberPassword = memberPassword;
-        this.nickname = nickname;
-        this.emailAddress = emailAddress;
-    }
 
     public Member toEntity() {
         return Member.builder()

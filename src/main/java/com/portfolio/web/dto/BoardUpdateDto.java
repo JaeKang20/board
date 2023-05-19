@@ -1,18 +1,24 @@
 package com.portfolio.web.dto;
 
+import com.portfolio.domain.Board;
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 
-@Data
 public class BoardUpdateDto {
-
+    private String registerDate;
     private String title;
     private String content;
-    public BoardUpdateDto () {
-    }
-    public BoardUpdateDto(String title, String content) {
-        this.title = title;
-        this.content = content;
+public BoardUpdateDto(){
+
+}
+    public Board toEntity(){
+        return Board.builder().registerDate(registerDate)
+        .title(title)
+        .content(content).
+        build();
     }
 }

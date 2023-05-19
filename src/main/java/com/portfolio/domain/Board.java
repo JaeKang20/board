@@ -1,19 +1,15 @@
 package com.portfolio.domain;
 
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 
-@Getter
+@Getter@Setter
 @NoArgsConstructor
-@Data
 @Entity
 public class Board {
 
