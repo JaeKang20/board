@@ -1,7 +1,7 @@
 package com.portfolio.web.dto;
 
 import com.portfolio.domain.Board;
-import lombok.Data;
+
 import lombok.Getter;
 import lombok.Setter;
 
