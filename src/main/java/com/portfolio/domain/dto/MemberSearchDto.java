@@ -1,4 +1,4 @@
-package com.portfolio.domain;
+package com.portfolio.domain.dto;
 
 import lombok.*;
 

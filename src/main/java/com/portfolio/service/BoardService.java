@@ -40,20 +40,19 @@ public class BoardService {
     }
 
 
-    public void update(Long boardId, BoardUpdateDto updateParam) {
-        Board findBoard = boardRepository.findById(boardId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다. boardId=" + boardId));
 
-        findBoard.setUpdateDate(LocalDateTime.now().toString());
-        findBoard.setTitle(updateParam.getTitle());
-        findBoard.setContent(updateParam.getContent());
+        public void update(Long boardId, BoardUpdateDto updateParam) {
+            Board findBoard = findById(boardId).orElseThrow();
+            findBoard.setUpdateDate(LocalDateTime.now().toString());
+            findBoard.setTitle(updateParam.getTitle());
+            findBoard.setContent(updateParam.getContent());
+            boardRepository.save(findBoard);
+        }
 
-        boardRepository.save(findBoard); // 업데이트된 게시글 저장
+
+    public Optional<Board> findById(Long id) {
+        return boardRepository.findById(id);
     }
-
-
-
-
 
     public Page<Board> findBoards(BoardSearchCond boardSearchCond, Pageable pageable) {
         if (StringUtils.hasText(boardSearchCond.getTitle()) && StringUtils.hasText(boardSearchCond.getContent())) {
@@ -116,8 +115,8 @@ public class BoardService {
         board.setBoardViewCount(board.getBoardViewCount() - 1);
     }
 
-    public Optional<Board> findById(Long id) {
-        return boardRepository.findById(id);
-    }
+
+
+
 
 }

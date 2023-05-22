@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 public class Board {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue
     private Long boardId;
 
 

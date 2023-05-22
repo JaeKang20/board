@@ -6,6 +6,7 @@ import com.portfolio.domain.*;
 import com.portfolio.service.*;
 import com.portfolio.web.dto.BoardSearchCond;
 
+import com.portfolio.web.dto.BoardUpdateDto;
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -56,12 +57,15 @@ public class BoardController {
 
 
         Board board = boardService.findById(boardId).get();
-        if (loginMember.getMemberId() != board.getMember().getMemberId()) {
+        if (!loginMember.getMemberId().equals(board.getMember().getMemberId())) {
+            System.out.println(loginMember.getMemberId()+"and"+board.getMember().getMemberId());
+            System.out.println(loginMember.getMemberId().compareTo(board.getMember().getMemberId()));
             return "redirect:/error/403";
         }
         model.addAttribute("board", board);
         return "editForm";
     }
+
 
 
 }

@@ -4,8 +4,10 @@ import com.portfolio.config.SessionConst;
 import com.portfolio.domain.*;
 import com.portfolio.service.*;
 
+
 import com.portfolio.web.dto.BoardUpdateDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +48,7 @@ public class BoardApiController {
 
         return ResponseEntity.ok(response);
     }
-    @PostMapping (value = "/{boardId}/edit", consumes = "application/json;charset=UTF-8")
+    @PostMapping(value = "/{boardId}/edit", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<?> edit(@PathVariable Long boardId, @RequestBody BoardUpdateDto requestBody) {
         String title = requestBody.getTitle(); // 클라이언트로부터 받은 JSON 데이터에서 "title" 필드 값을 추출
         String content = requestBody.getContent(); // 클라이언트로부터 받은 JSON 데이터에서 "content" 필드 값을 추출
@@ -60,6 +62,8 @@ public class BoardApiController {
         response.put("boardId", boardId);
         return ResponseEntity.ok(response);
     }
+
+
     @PostMapping({"/{boardId}/boardLike"})
     public String addBoardLike(@PathVariable long boardId, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember
             ,RedirectAttributes redirectAttributes) {

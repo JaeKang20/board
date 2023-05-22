@@ -2,7 +2,7 @@ package com.portfolio.service;
 
 
 
-import com.portfolio.domain.MemberSearchDto;
+import com.portfolio.domain.dto.MemberSearchDto;
 import com.portfolio.web.dto.MemberSaveDto;
 import com.portfolio.domain.Member;
 import com.portfolio.domain.MemberRepository;
