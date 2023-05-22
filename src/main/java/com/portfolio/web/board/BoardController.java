@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -29,13 +30,19 @@ public class BoardController {
                          Model model,@PageableDefault(size = 5, direction = Sort.Direction.DESC, sort = "boardId") Pageable pageable) {
         // 로그인한 회원 정보를 세션에서 가져옵니다.
         // 세션에 로그인 정보가 없을 수도 있으므로 required = false로 설정합니다.
-        Page<Board> boardPage = boardService.findBoards(boardSearchCond, pageable);
-        // 게시판을 페이징하여 가져옵니다.
-        // boardService를 사용하여 boardSearchCond와 pageable을 이용하여 검색 결과를 가져옵니다.
+        Page<Board> boardPage;
+        if (StringUtils.hasText(boardSearchCond.getTitle()) || StringUtils.hasText(boardSearchCond.getContent())) {
+            boardPage = boardService.findBoards(boardSearchCond, pageable);
+            //findBoards 메서드 실행하여 조건이 있으면 먼저 실행
+        } else {
+            boardPage = boardService.getBoards(pageable);
+        }  // 조건이 없다면 게시판을 페이징하여 가져옵니다. getBoards는 최신 순으로 나열합니다.
+
         model.addAttribute("loginMember", loginMember);
         model.addAttribute("boards", boardPage);
         return "boards";
     }
+
     @GetMapping("/add")
     public String writeForm(Model model) {
         BoardSearchCond boardSearchCond = new BoardSearchCond();

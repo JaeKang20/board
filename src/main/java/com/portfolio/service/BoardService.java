@@ -7,6 +7,8 @@ import com.portfolio.domain.Member;
 import com.portfolio.web.dto.BoardSearchCond;
 import com.portfolio.web.dto.BoardUpdateDto;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +38,8 @@ public class BoardService {
         return boardRepository.save(board);
     }
     public Page<Board> getBoards(Pageable pageable) {
+        Sort sort = Sort.by("registerDate").descending();
+        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
         return boardRepository.findAll(pageable);
     }
 
@@ -56,12 +60,16 @@ public class BoardService {
 
     public Page<Board> findBoards(BoardSearchCond boardSearchCond, Pageable pageable) {
         if (StringUtils.hasText(boardSearchCond.getTitle()) && StringUtils.hasText(boardSearchCond.getContent())) {
+            //검색조건에서 타이틀과 컨텐츠가 모두 있다면
             return boardRepository.findByTitleContainingOrContentContaining(boardSearchCond.getTitle(), boardSearchCond.getContent(), pageable);
         } else if (StringUtils.hasText(boardSearchCond.getTitle())) {
+            //검색조건에서 타이틀이 있다면
             return boardRepository.findByTitleContaining(boardSearchCond.getTitle(), pageable);
         } else if (StringUtils.hasText(boardSearchCond.getNickname())) {
+            //검색조건에서 글쓴이가 있다면
             return boardRepository.findByMember_Nickname(boardSearchCond.getNickname(), pageable);
         } else {
+            //아무것도 없다면
             return boardRepository.findAll(pageable);
         }
     }
@@ -88,12 +96,12 @@ public class BoardService {
     public boolean isAlreadyLiked(Member loginMember, Long boardId) {
         HttpSession session = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getSession();
         Set<Long> likedBoardIds = (Set<Long>) session.getAttribute(SessionConst.LIKED_BOARD_IDS);
+        System.out.println("Liked Board Ids: " + likedBoardIds);
         if (likedBoardIds != null && likedBoardIds.contains(boardId)) {
             return true;
         }
         return false;
     }
-
     public void addLikedBoard(Member loginMember, Long boardId) {
         HttpSession session = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getSession(true);
         Set<Long> likedBoardIds = (Set<Long>) session.getAttribute(SessionConst.LIKED_BOARD_IDS);
