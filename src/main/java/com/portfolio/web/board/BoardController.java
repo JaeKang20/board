@@ -25,11 +25,10 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
     private final BoardService boardService;
     @GetMapping
-    public String boards(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
-                         @ModelAttribute("boardSearch") BoardSearchCond boardSearchCond,
+    public String boards(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,// 로그인한 회원 정보를 세션에서 가져옵니다.
+                         @ModelAttribute("boardSearch") BoardSearchCond boardSearchCond,//view에서 Model사용 가능.
                          Model model,@PageableDefault(size = 5, direction = Sort.Direction.DESC, sort = "boardId") Pageable pageable) {
-        // 로그인한 회원 정보를 세션에서 가져옵니다.
-        // 세션에 로그인 정보가 없을 수도 있으므로 required = false로 설정합니다.
+                // 세션에 로그인 정보가 없을 수도 있으므로 required = false로 설정합니다.
         Page<Board> boardPage;
         if (StringUtils.hasText(boardSearchCond.getTitle()) || StringUtils.hasText(boardSearchCond.getNickname())|| StringUtils.hasText(boardSearchCond.getContent())) {
             boardPage = boardService.findBoards(boardSearchCond, pageable);

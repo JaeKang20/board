@@ -19,7 +19,7 @@ public class HelloController {
         model.addAttribute("data", "Hello!");
         return "hello";
     }
-    @GetMapping("hello-mvc")//템플릿 엔진
+    @GetMapping("hello-mvc")//경로
     public String helloMvc(@RequestParam("name")String name, Model model){
         model.addAttribute("name", name);
         return "hello-template";
