@@ -31,7 +31,7 @@ public class BoardController {
         // 로그인한 회원 정보를 세션에서 가져옵니다.
         // 세션에 로그인 정보가 없을 수도 있으므로 required = false로 설정합니다.
         Page<Board> boardPage;
-        if (StringUtils.hasText(boardSearchCond.getTitle()) || StringUtils.hasText(boardSearchCond.getNickname())) {
+        if (StringUtils.hasText(boardSearchCond.getTitle()) || StringUtils.hasText(boardSearchCond.getNickname())|| StringUtils.hasText(boardSearchCond.getContent())) {
             boardPage = boardService.findBoards(boardSearchCond, pageable);
             //findBoards 메서드 실행하여 조건이 있으면 먼저 실행
         } else {
@@ -59,7 +59,7 @@ public class BoardController {
     }
 
     @GetMapping("/{boardId}/edit")
-    public String editForm(@PathVariable Long boardId, Model model,
+    public String editForm(@PathVariable Long boardId, Model model, //PathVariable은 {}에 들어갈 내용이다.
                            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
 
 

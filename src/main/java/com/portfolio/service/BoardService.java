@@ -59,17 +59,17 @@ public class BoardService {
     }
 
     public Page<Board> findBoards(BoardSearchCond boardSearchCond, Pageable pageable) {
-        if (StringUtils.hasText(boardSearchCond.getTitle()) && StringUtils.hasText(boardSearchCond.getContent())) {
-            //검색조건에서 타이틀과 컨텐츠가 모두 있다면
-            return boardRepository.findByTitleContainingOrContentContaining(boardSearchCond.getTitle(), boardSearchCond.getContent(), pageable);
-        } else if (StringUtils.hasText(boardSearchCond.getTitle())) {
-            //검색조건에서 타이틀이 있다면
+        if (StringUtils.hasText(boardSearchCond.getTitle())) {
+            // 제목으로 검색
             return boardRepository.findByTitleContaining(boardSearchCond.getTitle(), pageable);
+        } else if (StringUtils.hasText(boardSearchCond.getContent())) {
+            // 내용으로 검색
+            return boardRepository.findByContentContaining(boardSearchCond.getContent(), pageable);
         } else if (StringUtils.hasText(boardSearchCond.getNickname())) {
-            //검색조건에서 글쓴이가 있다면
+            // 글쓴이로 검색
             return boardRepository.findByMember_Nickname(boardSearchCond.getNickname(), pageable);
         } else {
-            //아무것도 없다면
+            // 조건 없이 전체 조회
             return boardRepository.findAll(pageable);
         }
     }

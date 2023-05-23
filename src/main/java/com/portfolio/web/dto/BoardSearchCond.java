@@ -4,13 +4,11 @@ import lombok.*;
 
 
 @Data
-@Getter @Setter
 @NoArgsConstructor
 public class BoardSearchCond {
 
     private String title;
     private String nickname;
-
     private String content;
     private int boardLike;
     private int boardViewCount;

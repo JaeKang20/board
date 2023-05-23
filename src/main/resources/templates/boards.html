@@ -11,7 +11,7 @@
     <div class="py-5 text-center">
         <h2>게시판 목록</h2>
     </div>
-    <h4 class="mb-3" th:text="|안녕하세요: ${loginMember?.nickname}님!|">로그인 사용자 이름</h4>
+    <h4 class="mb-3" th:text="|안녕하세요: ${loginMember?.nickname}님! 반가워요!|">로그인 사용자 이름</h4>
 
     <form th:object="${boardSearch}" method="get" class="form-inline">
         <div class="row">
@@ -19,8 +19,12 @@
                 <input type="text" th:field="*{title}" class="form-control" placeholder="제목"/>
             </div>
             <div class="col">
+                <input type="text" th:field="*{content}" class="form-control" placeholder="내용"/>
+            </div>
+            <div class="col">
                 <input type="text" th:field="*{nickname}" class="form-control" placeholder="글쓴이"/>
             </div>
+
             <div class="col">
                 <button type="submit" class="btn btn-secondary mb-2">검색</button>
             </div>
