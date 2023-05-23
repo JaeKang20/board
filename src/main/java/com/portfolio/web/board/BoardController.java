@@ -6,7 +6,7 @@ import com.portfolio.domain.*;
 import com.portfolio.service.*;
 import com.portfolio.web.dto.BoardSearchCond;
 
-import com.portfolio.web.dto.BoardUpdateDto;
+
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -31,7 +31,7 @@ public class BoardController {
         // 로그인한 회원 정보를 세션에서 가져옵니다.
         // 세션에 로그인 정보가 없을 수도 있으므로 required = false로 설정합니다.
         Page<Board> boardPage;
-        if (StringUtils.hasText(boardSearchCond.getTitle()) || StringUtils.hasText(boardSearchCond.getContent())) {
+        if (StringUtils.hasText(boardSearchCond.getTitle()) || StringUtils.hasText(boardSearchCond.getNickname())) {
             boardPage = boardService.findBoards(boardSearchCond, pageable);
             //findBoards 메서드 실행하여 조건이 있으면 먼저 실행
         } else {
