@@ -49,5 +49,6 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 ```
 
 **🔥ERD**
+
 <img width="506" alt="KakaoTalk_Photo_2023-05-24-12-51-43" src="https://github.com/JaeKang20/board/assets/100588597/21d41c85-8164-441d-a888-3b5d4747e780">
 
