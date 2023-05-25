@@ -4,6 +4,7 @@ import com.portfolio.config.SessionConst;
 import com.portfolio.domain.Board;
 import com.portfolio.domain.BoardRepository;
 import com.portfolio.domain.Member;
+import com.portfolio.domain.MemberRepository;
 import com.portfolio.web.dto.BoardSearchCond;
 import com.portfolio.web.dto.BoardUpdateDto;
 
@@ -23,13 +24,16 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class BoardService {
     private final BoardRepository boardRepository;
+
 
     public Board save(Board board) {
 
@@ -42,7 +46,9 @@ public class BoardService {
         pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
         return boardRepository.findAll(pageable);
     }
-
+    public Page<Board> findAllSortedByAdminStatus(Pageable pageable) {
+        return boardRepository.findAllSortedByAdminStatus(pageable);
+    }
 
 
         public void update(Long boardId, BoardUpdateDto updateParam) {

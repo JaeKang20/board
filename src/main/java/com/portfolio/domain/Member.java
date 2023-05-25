@@ -21,14 +21,14 @@ public class Member {
     //데이터베이스에서 자동으로 생성되는 primary key 값을 사용하여 엔티티 객체를 생성
     private  Long id;
 
-    @NotBlank
+    @NotBlank@Column(unique = true)
     @Size(min = 4, message = "아이디는 최소 4자 이상이어야 합니다.")
     private String memberId;
 
     @NotBlank
     @Size(min = 4, message = "비밀번호는 최소 4자 이상이어야 합니다.")
     private String memberPassword;
-    @NotNull
+    @NotNull@NotBlank@Column(unique = true)
     private String nickname;
 
     @NotNull

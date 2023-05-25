@@ -25,17 +25,20 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
     private final BoardService boardService;
     @GetMapping
-    public String boards(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,// 로그인한 회원 정보를 세션에서 가져옵니다.
-                         @ModelAttribute("boardSearch") BoardSearchCond boardSearchCond,//view에서 Model사용 가능.
-                         Model model,@PageableDefault(size = 5, direction = Sort.Direction.DESC, sort = "boardId") Pageable pageable) {
-                // 세션에 로그인 정보가 없을 수도 있으므로 required = false로 설정합니다.
+    public String boards(
+            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
+            @ModelAttribute("boardSearch") BoardSearchCond boardSearchCond,
+            Model model,
+            @PageableDefault(size = 5,direction = Sort.Direction.DESC, sort = "boardId") Pageable pageable) {
+
         Page<Board> boardPage;
-        if (StringUtils.hasText(boardSearchCond.getTitle()) || StringUtils.hasText(boardSearchCond.getNickname())|| StringUtils.hasText(boardSearchCond.getContent())) {
+        if (StringUtils.hasText(boardSearchCond.getTitle())
+                || StringUtils.hasText(boardSearchCond.getNickname())
+                || StringUtils.hasText(boardSearchCond.getContent())) {
             boardPage = boardService.findBoards(boardSearchCond, pageable);
-            //findBoards 메서드 실행하여 조건이 있으면 먼저 실행
         } else {
-            boardPage = boardService.getBoards(pageable);
-        }  // 조건이 없다면 게시판을 페이징하여 가져옵니다. getBoards는 최신 순으로 나열합니다.
+            boardPage = boardService.findAllSortedByAdminStatus(pageable);
+        }
 
         model.addAttribute("loginMember", loginMember);
         model.addAttribute("boards", boardPage);
