@@ -22,7 +22,7 @@ public class MemberController {
     public String addForm(@ModelAttribute("member") Member member) {
         return "members/addMemberForm";
     }
-//아무 역할 없이 resource/templates/members/createMemberForm.html으로 보냄.
+//아무 역할 없이 resource/templates/members/createMemberForm.html으로 get요청
 
     @PostMapping("/add") // 클라이언트로부터 HTTP POST 요청을 받을 때 처리하는 메소드를 지정합니다. "/add" 경로로 요청이 오면 이 메소드가 실행됩니다.
     public String save(@Validated @ModelAttribute MemberSaveDto memberSaveDto, BindingResult bindingResult) {
@@ -35,6 +35,4 @@ public class MemberController {
 
         return "redirect:/"; // 저장 후, 메인 페이지("/")로 리다이렉트합니다.
     }
-
-
 }

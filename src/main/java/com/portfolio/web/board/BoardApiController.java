@@ -1,13 +1,15 @@
 package com.portfolio.web.board;
 
 import com.portfolio.config.SessionConst;
+import com.portfolio.config.argumentresolver.AdminAuthorize;
+import com.portfolio.config.argumentresolver.LoginUserAuthorize;
 import com.portfolio.domain.*;
 import com.portfolio.service.*;
 
 
 import com.portfolio.web.dto.BoardUpdateDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +20,14 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/boards")
 public class BoardApiController {
 
     private final BoardService boardService;
+
 
 
 
@@ -85,14 +89,19 @@ public class BoardApiController {
         return "redirect:/";
     }
 
+    @AdminAuthorize // "ADMIN" 권한을 가진 사용자만 접근 가능
     @PostMapping("/{boardId}")
-    public String delete(@PathVariable Long boardId) {
+    public String delete(@PathVariable Long boardId, @LoginUserAuthorize Member loginUser) {
+        Board board = boardService.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+        Member writer = board.getMember();
+
+        // 관리자 또는 게시물 작성자만이 해당 게시물을 삭제할 수 있도록 처리
+        if (!loginUser.isAdmin() && !writer.getId().equals(loginUser.getId())) {
+            throw new IllegalStateException("권한이 없습니다.");
+        }
+
         boardService.delete(boardId);
         return "redirect:/boards"; // 삭제 후 리다이렉션할 URL을 정확히 지정
     }
-
-
-
-
-
 }

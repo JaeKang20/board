@@ -1,6 +1,6 @@
 package com.portfolio.config;
 
-import com.portfolio.web.argumentresolver.LoginMemberArgumentResolver;
+import com.portfolio.config.argumentresolver.LoginMemberArgumentResolver;
 import com.portfolio.web.filter.LogFilter;
 import com.portfolio.web.filter.LoginCheckFilter;
 import lombok.RequiredArgsConstructor;

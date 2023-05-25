@@ -1,10 +1,11 @@
-package com.portfolio.web.argumentresolver;
+package com.portfolio.config.argumentresolver;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.PARAMETER)
+@Target({ ElementType.METHOD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Login {
+public @interface AdminAuthorize {
 }

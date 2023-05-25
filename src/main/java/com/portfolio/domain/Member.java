@@ -37,14 +37,18 @@ public class Member {
 
     private String joinDate;
 
+
+    private boolean isAdmin; // 관리자 여부를 나타내는 필드
+
     @Builder
-    public Member(Long id, String memberId,String memberPassword, String nickname, String emailAddress, String joinDate)  {
-    this.id = id;
-    this.memberId = memberId;
-    this.memberPassword = memberPassword;
-    this.nickname = nickname;
-    this.emailAddress = emailAddress;
-    this.joinDate = joinDate;
+    public Member(Long id, String memberId, String memberPassword, String nickname, String emailAddress, String joinDate, boolean isAdmin) {
+        this.id = id;
+        this.memberId = memberId;
+        this.memberPassword = memberPassword;
+        this.nickname = nickname;
+        this.emailAddress = emailAddress;
+        this.joinDate = joinDate;
+        this.isAdmin = isAdmin;
     }
 
 }
