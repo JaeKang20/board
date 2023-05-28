@@ -47,6 +47,10 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
+        if (loginMember.isAdmin()) {
+            return "redirect:/boards/management";
+        }//만약 관리자라면 위 경로로 들어갑니다.
+
         return "redirect:/boards";
     }
     @PostMapping("/logout")

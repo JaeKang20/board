@@ -9,10 +9,10 @@ import com.portfolio.domain.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @Service
@@ -45,8 +45,5 @@ public class MemberService {
         Optional<Member> member = memberRepository.findByMemberIdAndMemberPassword(memberSearchDto.getMemberId(),memberSearchDto.getMemberPassword());
         return member.orElseThrow(() -> new IllegalArgumentException("잘못된 아이디 또는 비밀번호"));
     }
-
-
-
 
 }

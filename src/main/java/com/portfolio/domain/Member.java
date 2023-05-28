@@ -36,8 +36,6 @@ public class Member {
     private String emailAddress;
 
     private String joinDate;
-
-
     private boolean isAdmin; // 관리자 여부를 나타내는 필드
 
     @Builder

@@ -129,8 +129,13 @@ public class BoardService {
         board.setBoardViewCount(board.getBoardViewCount() - 1);
     }
 
+    public List<Board> getTopTenBoardsView() {
+        return boardRepository.findTop10ByOrderByBoardViewCountDesc();
+    }
 
-
+    public List<Board> getTopTenBoardsLike() {
+        return boardRepository.findTop10ByOrderByBoardLikeDesc();
+    }
 
 
 }

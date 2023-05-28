@@ -1,8 +1,11 @@
 package com.portfolio.web.board;
 
 import com.portfolio.config.SessionConst;
+
+import com.portfolio.config.argumentresolver.LoginUserAuthorize;
 import com.portfolio.domain.*;
 
+import com.portfolio.domain.dto.MemberSearchDto;
 import com.portfolio.service.*;
 import com.portfolio.web.dto.BoardSearchCond;
 
@@ -18,12 +21,15 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Slf4j
 @Controller
 @RequestMapping("/boards")
 public class BoardController {
     private final BoardService boardService;
+    private final MemberService memberService;
     @GetMapping
     public String boards(
             @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
@@ -74,7 +80,20 @@ public class BoardController {
         model.addAttribute("board", board);
         return "editForm";
     }
-
+    @GetMapping("/management")
+    public String management(Model model,
+                             @LoginUserAuthorize Member admin,
+                             MemberSearchDto memberSearchDto) {
+        if (admin != null && admin.isAdmin()) {
+            List<Board> topTenBoardsView = boardService.getTopTenBoardsView();
+            List<Board> topTenBoardsLike = boardService.getTopTenBoardsLike();
+            model.addAttribute("topTenBoardsView", topTenBoardsView);
+            model.addAttribute("topTenBoardsLike", topTenBoardsLike);
+            return "members/management";
+        } else {
+            return "redirect:error/403";
+        }
+    }
 
 
 }
