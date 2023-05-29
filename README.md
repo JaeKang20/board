@@ -4,7 +4,7 @@
 🔥AWS로 서버배포한 환경 바로 가보기 클릭: 
 http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 
-<img width="635" alt="Snipaste_2023-05-23_23-04-43" src="https://github.com/JaeKang20/board/assets/100588597/358c73c4-ef70-4930-8561-718e7f0775e1">
+<img width="627" alt="Snipaste_2023-05-29_21-01-30" src="https://github.com/JaeKang20/board/assets/100588597/21b7d9a7-31bc-4b62-9d44-92eda1452541"><img width="1090" alt="Snipaste_2023-05-29_21-13-37" src="https://github.com/JaeKang20/board/assets/100588597/d96563d0-3513-4c31-9879-96715baec4e1">
 
 
 **🔥기획의도**
@@ -15,15 +15,21 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 **🔥요구사항 분석**
 
 ``` 
-◼ 게시판 기능
-·게시글 조회 
-·게시글 등록
-·게시글 수정
-·게시글 삭제
-·게시글 검색 (제목, 내용, 글쓴이)
-·게시글 추천 기능
+◼ 회원 기능
+·회원가입,로그인 기능
+
+◼ 게시글 기능
+·게시글 CRUD
+·게시글 검색 기능 (제목, 내용, 글쓴이)
+·게시글 좋아요 기능
+·게시글 조회수 기능
+·게시글 페이지 기능
 ·게시글 조회수 기능
 
+◼ 관리자 기능
+·관리자 공지 기능
+·사용 규정 위반 포스팅 삭제 기능
+·관리자 페이지 (TOP 10 게시글 확인)
 ```
 
 
@@ -58,7 +64,5 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 |        게시글 관리    |     · CRUD, 조회수 기능<br>     · 좋아요 기능 <br>    · 페이징 기능                                                                                                                                                    |
 |      관리자 페이지    |      ◦특정 페이지는 관리자만 접속  <br>        ○게시글 조회수 top10 리스트      <br>      ○게시글 추천수 top10 리스트  <br>   · ADMIN 계정은 공지글 게시 가능  <br>   · ADMIN 계정은 모든 게시물 삭제 가능    |
 
-**🔥ERD**
 
-<img width="506" alt="KakaoTalk_Photo_2023-05-24-12-51-43" src="https://github.com/JaeKang20/board/assets/100588597/21d41c85-8164-441d-a888-3b5d4747e780">
 
