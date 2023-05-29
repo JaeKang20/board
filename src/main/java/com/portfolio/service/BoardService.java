@@ -4,7 +4,6 @@ import com.portfolio.config.SessionConst;
 import com.portfolio.domain.Board;
 import com.portfolio.domain.BoardRepository;
 import com.portfolio.domain.Member;
-import com.portfolio.domain.MemberRepository;
 import com.portfolio.web.dto.BoardSearchCond;
 import com.portfolio.web.dto.BoardUpdateDto;
 
@@ -97,7 +96,6 @@ public class BoardService {
         board.setBoardLike(board.getBoardLike() + 1);
         boardRepository.save(board);
         return true;
-
     }
     public boolean isAlreadyLiked(Member loginMember, Long boardId) {
         HttpSession session = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getSession();

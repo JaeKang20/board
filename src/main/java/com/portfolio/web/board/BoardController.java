@@ -29,7 +29,7 @@ import java.util.List;
 @RequestMapping("/boards")
 public class BoardController {
     private final BoardService boardService;
-    private final MemberService memberService;
+    private final ComplainService complainService;
     @GetMapping
     public String boards(
             @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
@@ -87,8 +87,10 @@ public class BoardController {
         if (admin != null && admin.isAdmin()) {
             List<Board> topTenBoardsView = boardService.getTopTenBoardsView();
             List<Board> topTenBoardsLike = boardService.getTopTenBoardsLike();
+            List<Complain> topTenComplain = complainService.getTopTenComplain();
             model.addAttribute("topTenBoardsView", topTenBoardsView);
             model.addAttribute("topTenBoardsLike", topTenBoardsLike);
+            model.addAttribute("topTenComplainedBoards",topTenComplain);
             return "members/management";
         } else {
             return "redirect:error/403";

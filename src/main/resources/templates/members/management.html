@@ -46,6 +46,14 @@
         </li>
       </ul>
     </div>
+    <div>
+      <h1>신고 횟수 기준 상위 10개 게시글</h1>
+      <ul class="board-list">
+        <li th:each="complain, index : ${topTenComplainedBoards}" class="board-item">
+          <span th:text="${index.index + 1 + '. ' + complain.board.title + ' - ' + complain.number}"></span>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="btn-container">
