@@ -31,7 +31,7 @@
 <div class="container">
   <div class="board-container">
     <div>
-      <h1>조회수 기준 상위 10개 게시글 | </h1>
+      <h1>조회수 높은 게시글 (상위 10개)</h1>
       <ul class="board-list">
         <li th:each="board, index : ${topTenBoardsView}" class="board-item">
           <span th:text="${index.index + 1 + '. ' + board.title + ' - ' + board.boardViewCount}"></span>
@@ -39,7 +39,7 @@
       </ul>
     </div>
     <div>
-      <h1>좋아요 기준 상위 10개 게시글</h1>
+      <h1>좋아요 받은 게시글 (상위 10개)</h1>
       <ul class="board-list">
         <li th:each="board, index : ${topTenBoardsLike}" class="board-item">
           <span th:text="${index.index + 1 + '. ' + board.title + ' - ' + board.boardLike}"></span>
@@ -47,7 +47,7 @@
       </ul>
     </div>
     <div>
-      <h1>신고 횟수 기준 상위 10개 게시글</h1>
+      <h1>신고받은 게시글 (상위 10개)</h1>
       <ul class="board-list">
         <li th:each="complain, index : ${topTenComplainedBoards}" class="board-item">
           <span th:text="${index.index + 1 + '. ' + complain.board.title + ' - ' + complain.number}"></span>
