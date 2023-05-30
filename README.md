@@ -3,10 +3,11 @@
 ## 최재강 개발자의 포트폴리오
 🔥AWS로 서버배포한 환경 바로 가보기 클릭: 
 http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
+<img width="671" alt="Snipaste_2023-05-30_12-18-36" src="https://github.com/JaeKang20/board/assets/100588597/9eeca09f-a241-43fa-850f-1522a7afe824">
+<img width="656" alt="Snipaste_2023-05-30_12-18-44" src="https://github.com/JaeKang20/board/assets/100588597/bab67079-23d7-49bb-864d-ba81fde0fdc9">
+<img width="615" alt="Snipaste_2023-05-30_12-19-01" src="https://github.com/JaeKang20/board/assets/100588597/0e60d853-55b4-4a33-8c13-89dc131ec72c">
 
-<img<img width="656" alt="Snipaste_2023-05-30_12-18-44" src="https://github.com/JaeKang20/board/assets/100588597/6b5d9590-7814-4ca5-a9b7-60697ea5cab8">
- width="671" alt="Snipaste_2023-05-30_<img width="615" alt="Snipaste_2023-05-30_12-19-01" src="https://github.com/JaeKang20/board/assets/100588597/21d3dde7-7dee-47aa-9950-e06b5e4823be">
-12-18-36" src="https://github.com/JaeKang20/board/assets/100588597/f1bcc9ff-db88-43fb-9837-c5641d563d2b">
+
 
 
 
