@@ -9,9 +9,10 @@ import com.portfolio.domain.dto.MemberSearchDto;
 import com.portfolio.service.*;
 import com.portfolio.web.dto.BoardSearchCond;
 
+import lombok.extern.slf4j.Slf4j;
 
-import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -67,20 +68,20 @@ public class BoardController {
     }
 
     @GetMapping("/{boardId}/edit")
-    public String editForm(@PathVariable Long boardId, Model model, //PathVariable은 {}에 들어갈 내용이다.
+    public String editForm(@PathVariable Long boardId, Model model,
                            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
-
 
         Board board = boardService.findById(boardId).get();
         if (!loginMember.getMemberId().equals(board.getMember().getMemberId())) {
-            System.out.println(loginMember.getMemberId()+"and"+board.getMember().getMemberId());
-            System.out.println(loginMember.getMemberId().compareTo(board.getMember().getMemberId()));
+            log.info("Member ID: {} and Board Member ID: {}", loginMember.getMemberId(), board.getMember().getMemberId());
+            log.info("Comparison Result: {}", loginMember.getMemberId().compareTo(board.getMember().getMemberId()));
             return "redirect:/error/403";
         }
         model.addAttribute("board", board);
         return "editForm";
     }
-    @GetMapping("/management")
+
+    @GetMapping("/management")//관리자 계정이 들어가는 곳.
     public String management(Model model,
                              @LoginUserAuthorize Member admin,
                              MemberSearchDto memberSearchDto) {
