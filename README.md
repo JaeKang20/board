@@ -3,14 +3,19 @@
 ## 최재강 개발자의 포트폴리오
 🔥AWS로 서버배포한 환경 바로 가보기 클릭: 
 http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
+<img width="671" alt="Snipaste_2023-05-30_12-18-36" src="https://github.com/JaeKang20/board/assets/100588597/9eeca09f-a241-43fa-850f-1522a7afe824">
+<img width="656" alt="Snipaste_2023-05-30_12-18-44" src="https://github.com/JaeKang20/board/assets/100588597/bab67079-23d7-49bb-864d-ba81fde0fdc9">
+<img width="615" alt="Snipaste_2023-05-30_12-19-01" src="https://github.com/JaeKang20/board/assets/100588597/0e60d853-55b4-4a33-8c13-89dc131ec72c">
 
-<img width="627" alt="Snipaste_2023-05-29_21-01-30" src="https://github.com/JaeKang20/board/assets/100588597/21b7d9a7-31bc-4b62-9d44-92eda1452541"><img width="1090" alt="Snipaste_2023-05-29_21-13-37" src="https://github.com/JaeKang20/board/assets/100588597/d96563d0-3513-4c31-9879-96715baec4e1">
+
+
 
 
 **🔥기획의도**
 
 ```
 - 게시판 활용
+- 프론트·백엔드 기술환경 세팅 및 전체 기능 구현
 ```
 **🔥요구사항 분석**
 
@@ -30,6 +35,9 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 ·관리자 공지 기능
 ·사용 규정 위반 포스팅 삭제 기능
 ·관리자 페이지 (TOP 10 게시글 확인)
+
+◼ 신고센터 운영
+· 신고하기 기능
 ```
 
 
