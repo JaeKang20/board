@@ -12,6 +12,17 @@
       border-color: #dc3545;
       color: #dc3545;
     }
+
+        body {
+            background-color: black;
+            color: white;
+        }
+             body.bright-theme {
+            background-color: white;
+            color: black;
+        }
+
+
   </style>
 </head>
 <body>
@@ -52,5 +63,18 @@
         </div>
     </form>
 </div> <!-- /container -->
+<div style="text-align: center; margin-top: 2rem;">
+    <button class="w-30 btn btn-light btn-lg" type="button" onclick="toggleBrightness()">💡</button>
+</div>
+<script>
+    function toggleBrightness() {
+        var body = document.getElementsByTagName("body")[0];
+        if (body.classList.contains("bright-theme")) {
+            body.classList.remove("bright-theme");
+        } else {
+            body.classList.add("bright-theme");
+        }
+    }
+</script>
 </body>
 </html>
