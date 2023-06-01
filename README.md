@@ -85,5 +85,3 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 |      관리자 페이지    |      ◦특정 페이지는 관리자만 접속  <br>        ○게시글 조회수 top10 리스트      <br>      ○게시글 추천수 top10 리스트  <br>  ○게시글 신고 top10 리스트  <br>  · ADMIN 계정은 공지글 게시 가능  <br>   · ADMIN 계정은 모든 게시물 삭제 가능    |
 
 
-
-**🔥ERD**
