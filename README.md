@@ -16,8 +16,11 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 ```
 - 게시판 활용
 - 프론트·백엔드 기술환경 세팅 및 전체 기능 구현
+■  Restful API를 사용한 백엔드 간의 데이터 송수신
+■  MVC 패턴 학습
+
 ```
-**🔥요구사항 분석**
+**🔥기능 분석**
 
 ``` 
 ◼ 회원 기능
@@ -44,9 +47,20 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 **🔥시스템 구성**
 
 ```
-1.DB Server: AWS RDS - MySQL
-2.WEB Server: AWS EC2
-  -Spring boot: Spring MVC (html,js,css)
+1.프로젝트 - 최재강
+1) 포트폴리오 pdf
+2) 깃허브 URL
+3) 프로젝트
+
+2.프로젝트
+  -회원가입, 로그인
+  -일반 회원, 관리자 회원 구분
+  
+  ... 로그인 이후 ...
+  - 게시판 CRUD -
+  - 게시판 공지 -  
+  - 게시판 검색 -
+  - 게시판 페이징 -
 ```
 
 **🔥적용 기술 및 라이브러리**
@@ -63,7 +77,7 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 - AWS RDS
 ```
 
-**🔥**
+**🔥테이블**
 
 
 |          구분         |                                                                                                       내용                                                                                                     |
@@ -74,3 +88,4 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 
 
 
+**🔥ERD**
