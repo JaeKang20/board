@@ -62,14 +62,17 @@ public class BoardController {
     }
     @GetMapping("/{boardId}")
     public String board(@PathVariable long boardId, Model model) {
+        boardService.increaseViewCount(boardId); // 조회수 증가 처리
+
         Board board = boardService.findById(boardId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
         List<Reply> replies = replyService.findByBoardId(boardId);
         model.addAttribute("board", board);
         model.addAttribute("replies", replies);
-        boardService.increaseViewCount(boardId);
+
         return "board";
     }
+
 
 
     @GetMapping("/{boardId}/edit")

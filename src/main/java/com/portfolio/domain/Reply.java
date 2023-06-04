@@ -7,7 +7,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter@Setter@NoArgsConstructor@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
 public class Reply {
     @Id
     @GeneratedValue
@@ -17,14 +20,22 @@ public class Reply {
     @JoinColumn(name = "board_id")
     private Board board;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     @Column(name="reply_content")
     private String replyContent;
 
+    public String getMemberNickname() {
+        return member.getNickname();
+    }
+
     @Builder
-    public Reply(Long replyId, Board board, String replyContent){
+    public Reply(Long replyId, Board board, Member member, String replyContent) {
         this.replyId = replyId;
         this.board = board;
+        this.member = member;
         this.replyContent = replyContent;
-
     }
 }
