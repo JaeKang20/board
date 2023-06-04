@@ -23,7 +23,10 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -70,8 +73,22 @@ public class BoardController {
         model.addAttribute("board", board);
         model.addAttribute("replies", replies);
 
+        // 날짜 포맷 변경
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 a hh시 mm분", Locale.KOREAN);
+
+        // registerDate가 null이 아닌지 확인
+        String formattedRegisterDate = "";
+        if (board.getRegisterDate() != null) {
+            LocalDateTime parsedDate = LocalDateTime.parse(board.getRegisterDate(), inputFormatter);
+            formattedRegisterDate = parsedDate.format(outputFormatter);
+        }
+
+        model.addAttribute("formattedRegisterDate", formattedRegisterDate);
+
         return "board";
     }
+
 
 
 

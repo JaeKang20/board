@@ -24,9 +24,10 @@
   <div >
     <input type="text" id="title" name="title" class="form-control" value="제목" th:value="${board.title}" readonly>
   </div><br>
-  <div >
-   등록일 <input type="text" id="registerDate" name="date" class="form-control" value="등록 날짜" th:value="${board.registerDate}" readonly>
+  <div>
+    등록일: <span th:text="${formattedRegisterDate}"></span>
   </div>
+
   <div class="my-3">
 
     <div class="h-75">
