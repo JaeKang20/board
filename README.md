@@ -3,20 +3,16 @@
 ## 최재강 개발자의 포트폴리오
 🔥AWS로 서버배포한 환경 바로 가보기 클릭: 
 http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
-<img width="632" alt="Snipaste_2023-06-01_20-11-52" src="https://github.com/JaeKang20/board/assets/100588597/c32cb7ec-90dd-402d-853c-5dbc2b29e53a">
 
-<img width="671" alt="Snipaste_2023-05-30_12-18-36" src="https://github.com/JaeKang20/board/assets/100588597/9eeca09f-a241-43fa-850f-1522a7afe824">
-<img width="656" alt="Snipaste_2023-05-30_12-18-44" src="https://github.com/JaeKang20/board/assets/100588597/bab67079-23d7-49bb-864d-ba81fde0fdc9">
-<img width="615" alt="Snipaste_2023-05-30_12-19-01" src="https://github.com/JaeKang20/board/assets/100588597/0e60d853-55b4-4a33-8c13-89dc131ec72c">
-
-
+<img width="500"  height="500" alt="Snipaste_2023-06-01_22-09-09" src="https://github.com/JaeKang20/board/assets/100588597/80373f90-c1c3-45de-960a-f67963d29ff1">
+<img width="500"  height="500" alt="Snipaste_2023-06-01_22-09-23" src="https://github.com/JaeKang20/board/assets/100588597/78bee8df-b7a8-4267-9ba0-d0ef048a8dc4">
 
 
 
 **🔥기획의도**
 
 ```
-- 게시판 활용
+- 이력서 활용 (포트폴리오 및 게시판)
 - 프론트·백엔드 기술환경 세팅 및 전체 기능 구현
 ■  Restful API를 사용한 백엔드 간의 데이터 송수신
 ■  MVC 패턴 학습
@@ -63,6 +59,7 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
   - 게시판 공지 -  
   - 게시판 검색 -
   - 게시판 페이징 -
+  - 게시판 신고하기 -
 ```
 
 **🔥적용 기술 및 라이브러리**
@@ -85,9 +82,7 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
 |          구분         |                                                                                                       내용                                                                                                     |
 |:---------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |        로그인 관리    |  ·HandlerMethodArgumentResolver를 이용한 회원가입,<br>◦특정 페이지는 로그인한 회원만 접속                                                                            |
-|        게시글 관리    |     · CRUD, 조회수 기능<br>     · 좋아요 기능 <br>    · 페이징 기능                                                                                                                                                    |
-|      관리자 페이지    |      ◦특정 페이지는 관리자만 접속  <br>        ○게시글 조회수 top10 리스트      <br>      ○게시글 추천수 top10 리스트  <br>   · ADMIN 계정은 공지글 게시 가능  <br>   · ADMIN 계정은 모든 게시물 삭제 가능    |
+|        게시글 관리    |     · CRUD, 조회수 기능    · 좋아요 기능 <br>    · 페이징 기능   · 신고 기능                                                                                                                                                      |
+|      관리자 페이지    |      ◦특정 페이지는 관리자만 접속  <br>        ○게시글 조회수 top10 리스트      <br>      ○게시글 추천수 top10 리스트  <br>  ○게시글 신고 top10 리스트  <br>  · ADMIN 계정은 공지글 게시 가능  <br>   · ADMIN 계정은 모든 게시물 삭제 가능    |
 
 
-
-**🔥ERD**
