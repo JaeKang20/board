@@ -49,9 +49,27 @@
   </div>
 
 
-  <hr class="my-4 mt-lg-5">
+  <h3>댓글 목록</h3>
+  <div th:each="reply : ${replies}">
+    <p th:text="${reply.replyContent}"></p>
+    <button class="edit-btn" th:data-reply-id="${reply.replyId}">수정하기</button>
+    <button class="delete-btn" th:data-reply-id="${reply.replyId}">삭제하기</button>
+  </div>
+
+  <form th:action="@{/boards/{boardId}/reply(boardId=${board.boardId})}" method="post" class="my-3">
+    <div class="form-group">
+      <input type="text" class="form-control" id="replyContent" name="replyContent" placeholder="댓글을 입력하세요" required>
+    </div><br>
+    <button type="submit" class="btn btn-primary">댓글 등록</button>
+  </form>
 
 
+
+
+  <div class="row">
+    <!-- ... -->
+  </div>
+  <!-- ... -->
 
   <div class="row">
     <div class="col">
@@ -79,6 +97,7 @@
 </div> <!-- /container -->
 
 <script>
+
   // JavaScript를 사용하여 내용을 동적으로 설정
   var contentDiv = document.getElementById('content');
   var content = contentDiv.getAttribute('content');
@@ -94,7 +113,35 @@
       }
     });
   });
+let boardId = document.querySelector('input[name="boardId"]').value;
 
+// JavaScript를 사용하여 댓글 수정 및 삭제 기능 구현
+document.querySelectorAll('.edit-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        let replyId = btn.dataset.replyId;
+        let newContent = prompt("새 댓글 내용을 입력하세요.");
+        if (newContent) {
+            fetch(`/boards/${boardId}/reply/${replyId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({replyContent: newContent})
+            }).then(() => location.reload());
+        }
+    });
+});
+
+document.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        let replyId = btn.dataset.replyId;
+        if (confirm("댓글을 삭제하시겠습니까?")) {
+            fetch(`/boards/${boardId}/reply/${replyId}`, {
+                method: 'DELETE'
+            }).then(() => location.reload());
+        }
+    });
+});
 
 </script>
 </body>

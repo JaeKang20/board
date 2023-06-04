@@ -15,7 +15,6 @@ import java.util.List;
     public class ComplainService {
 
         private final ComplainRepository complainRepository;
-        private final MemberRepository memberRepository;
         private final BoardRepository boardRepository;
 
 

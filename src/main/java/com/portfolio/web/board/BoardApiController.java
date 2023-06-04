@@ -8,6 +8,7 @@ import com.portfolio.service.*;
 
 
 import com.portfolio.web.dto.BoardUpdateDto;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,6 @@ import java.util.Map;
 public class BoardApiController {
 
     private final BoardService boardService;
-
 
 
 
@@ -103,5 +103,8 @@ public class BoardApiController {
 
         boardService.delete(boardId);
         return "redirect:/boards"; // 삭제 후 리다이렉션할 URL을 정확히 지정
+
     }
+
+
 }

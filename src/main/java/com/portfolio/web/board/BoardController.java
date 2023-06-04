@@ -9,10 +9,11 @@ import com.portfolio.domain.dto.MemberSearchDto;
 import com.portfolio.service.*;
 import com.portfolio.web.dto.BoardSearchCond;
 
+
 import lombok.extern.slf4j.Slf4j;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -31,6 +32,7 @@ import java.util.List;
 public class BoardController {
     private final BoardService boardService;
     private final ComplainService complainService;
+    private final ReplyService replyService;
     @GetMapping
     public String boards(
             @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
@@ -62,10 +64,13 @@ public class BoardController {
     public String board(@PathVariable long boardId, Model model) {
         Board board = boardService.findById(boardId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+        List<Reply> replies = replyService.findByBoardId(boardId);
         model.addAttribute("board", board);
+        model.addAttribute("replies", replies);
         boardService.increaseViewCount(boardId);
         return "board";
     }
+
 
     @GetMapping("/{boardId}/edit")
     public String editForm(@PathVariable Long boardId, Model model,

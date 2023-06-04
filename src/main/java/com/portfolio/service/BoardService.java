@@ -48,7 +48,10 @@ public class BoardService {
     public Page<Board> findAllSortedByAdminStatus(Pageable pageable) {
         return boardRepository.findAllSortedByAdminStatus(pageable);
     }
-
+    public Board getBoard(Long boardId) {
+        return boardRepository.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid boardId: " + boardId));
+    }
 
         public void update(Long boardId, BoardUpdateDto updateParam) {
             Board findBoard = findById(boardId).orElseThrow();
