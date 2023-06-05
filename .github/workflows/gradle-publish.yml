@@ -8,7 +8,7 @@ env:
   S3_BUCKET_NAME: jaekang
   PROJECT_NAME: board
   CODE_DEPLOY_APP_NAME: board                   
-  CODE_DEPLOY_GROUP_NAME: board
+  CODE_DEPLOY_GROUP_NAME: board-group
   
 name: Gradle Build and Publish
 
@@ -54,9 +54,6 @@ jobs:
       run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}" # (10)
       shell: bash
 
-    - name: Show Current Time
-      run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}"    # (10)
-      shell: bash
     # 아래부분이 추가되는 내용입니다.
     - name: Make zip file
       run: zip -r ./$PROJECT_NAME.zip .         # (12)
@@ -74,3 +71,4 @@ jobs:
 
     - name: Code Deploy
       run: aws deploy create-deployment --application-name $CODE_DEPLOY_APP_NAME --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name $CODE_DEPLOY_GROUP_NAME --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$PROJECT_NAME.zip    #(16)
+
