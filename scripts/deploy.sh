@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app2/step2
-PROJECT_NAME=inflearn #해당 위치에 properties에 작성한 프로젝트명과 동일하게 작성
+PROJECT_NAME=board #해당 위치에 properties에 작성한 프로젝트명과 동일하게 작성
 
 
 echo "> Build 파일 복사"
@@ -21,14 +21,15 @@ else
 fi
 
 echo "> 새 애플리케이션 배포"
-JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
+JAR_NAME=$(ls -tr $REPOSITORY/| grep jar |tail -n 1)
 
-echo "> JAR_NAME: $JAR_NAME"
+echo "> JAR Name: $JAR_NAME"
+
 echo "> $JAR_NAME 에 실행권한 추가"
 chmod +x $JAR_NAME
 
 echo "> $JAR_NAME 실행"
 nohup java -jar \
-  -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app2/application-real.properties \
-  -Dspring.profiles.active=real \
-  $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+        -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app2/application-real.properties \
+        -Dspring.profiles.active=real \
+    $REPOSITORY/$JAR_NAME  2>&1 &
