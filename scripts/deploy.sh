@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app2/step2/zip
-PROJECT_NAME=board #해당 위치에 properties에 작성한 프로젝트명과 동일하게 작성
+PROJECT_NAME=inflearn #해당 위치에 properties에 작성한 프로젝트명과 동일하게 작성 *jar파일로 생성되는 인텔리제이 프로젝트명과 동일해야함.
 
 
 echo "> Build 파일 복사"
