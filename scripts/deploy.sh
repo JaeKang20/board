@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app2/step2
-PROJECT_NAME=board #해당 위치에 properties에 작성한 프로젝트명과 동일하게 작성
+PROJECT_NAME=inflearn #해당 위치에 properties에 작성한 프로젝트명과 동일하게 작성
 
 
 echo "> Build 파일 복사"
