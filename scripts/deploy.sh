@@ -33,7 +33,4 @@ chmod +x $JAR_NAME
 
 echo "> $JAR_NAME 실행"
 
-nohup java -jar \
-        -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app2/application-real.properties \
-        -Dspring.profiles.active=real \
-    $JAR_NAME > $REPOSITORY2/nohup.out 2>&1 &
+nohup java -jar -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app2/application-real.properties -Dspring.profiles.active=real inflearn-0.0.1-SNAPSHOT.jar > /home/ec2-user/app2/step2/nohup.out 2>&1 &
