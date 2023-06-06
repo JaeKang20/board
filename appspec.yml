@@ -13,6 +13,6 @@ files:
 
 hooks:
   ApplicationStart:
-    - location: /home/ec2-user/app2/step2/scripts/deploy.sh
+    - location: /home/ec2-user/app2/step2/zip/scripts/deploy.sh
       timeout: 60
       runas: ec2-user
