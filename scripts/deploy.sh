@@ -4,7 +4,7 @@ REPOSITORY=/home/ec2-user/app2/step2
 PROJECT_NAME=board #해당 위치에 properties에 작성한 프로젝트명과 동일하게 작성
 
 echo "> Build 파일 복사"
-cd $REPOSITORY/$PROJECT_NAME/*.jar $REPOSITORY/
+cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
@@ -32,4 +32,4 @@ echo "> $JAR_NAME 실행"
 nohup java -jar \
         -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app2/application-real.properties \
         -Dspring.profiles.active=real \
-    $REPOSITORY/$JAR_NAME  2>&1 &
+$REPOSITORY/$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
