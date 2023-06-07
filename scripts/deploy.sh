@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOSITORY=/home/ec2-user/app2/step2/
+REPOSITORY=/home/ec2-user/app2/step2
 PROJECT_NAME=inflearn #해당 위치에 properties에 작성한 프로젝트명과 동일하게 작성 *jar파일로 생성되는 인텔리제이 프로젝트명과 동일해야함.
 
 echo "> 경로 이동"
@@ -32,4 +32,7 @@ chmod +x $JAR_NAME
 
 echo "> $JAR_NAME 실행"
 
-nohup java -jar -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app2/application-real.properties -Dspring.profiles.active=real inflearn-0.0.1-SNAPSHOT.jar > /home/ec2-user/app2/step2/nohup.out 2>&1 &
+nohup java -jar \
+  -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app2/application-real.properties \
+  -Dspring.profiles.active=real \
+  $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
