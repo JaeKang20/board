@@ -1,12 +1,10 @@
-## github-actions.yml의 최상단입니다.
 env:
-  S3_BUCKET_NAME: jaekang #버킷이름
-  PROJECT_NAME: board #깃허브 프로젝트 이름
+  S3_BUCKET_NAME: jaekang
+  PROJECT_NAME: board
   CODE_DEPLOY_APP_NAME: board
   CODE_DEPLOY_GROUP_NAME: board-group
 
 name: gradle-publish
-
 
 on:
   release:
@@ -17,13 +15,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # runner
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
 
     steps:
-      - name: Checkout  # step 이름 지정
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Set up JDK 17
@@ -33,7 +31,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew  # gradlew에 대한 권한설정 명령어 (runner에서 실행)
+        run: chmod +x ./gradlew
         shell: bash
 
       - name: Build with Gradle
@@ -62,11 +60,6 @@ jobs:
           mv before-deploy/before-deploy.zip deploy/$PROJECT_NAME.zip
         shell: bash
 
-      # 아래 부분이 개인 설정
-      - name: Make zip file
-        run: zip -r ./$PROJECT_NAME.zip .
-        shell: bash
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -79,3 +72,4 @@ jobs:
 
       - name: Code Deploy
         run: aws deploy create-deployment --application-name $CODE_DEPLOY_APP_NAME --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name $CODE_DEPLOY_GROUP_NAME --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$PROJECT_NAME.zip
+
