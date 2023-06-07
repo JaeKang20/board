@@ -13,9 +13,11 @@ env:
 name: Gradle Build and Publish
 
 on:
+  release:
+    types: [push] # (1) push시 자동으로 실행됩니다.
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches: [main] # (2) main 브랜치에서 동작합니다.
+  workflow_dispatch: # (3) 수동으로도 실행이 가능합니다.
 
 jobs:
   build:
@@ -33,8 +35,8 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        server-id: github 
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
       shell: bash
