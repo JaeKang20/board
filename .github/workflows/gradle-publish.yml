@@ -13,9 +13,11 @@ env:
 name: Gradle Build and Publish
 
 on:
+  release:
+    types: [push] # (1) push시 자동으로 실행됩니다.
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches: [main] # (2) main 브랜치에서 동작합니다.
+  workflow_dispatch: # (3) 수동으로도 실행이 가능합니다.
 
 jobs:
   build:
@@ -33,8 +35,8 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        server-id: github 
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
       shell: bash
@@ -79,7 +81,7 @@ jobs:
         
 
     - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 $PROJECT_NAME.zip s3://$S3_BUCKET_NAME/$PROJECT_NAME/$PROJECT_NAME.zip  #(14)
+      run: aws s3 cp --region ap-northeast-2 ./$PROJECT_NAME.zip s3://$S3_BUCKET_NAME/$PROJECT_NAME/$PROJECT_NAME.zip    #(14)
 
     - name: Code Deploy 
       run: aws deploy create-deployment --application-name $CODE_DEPLOY_APP_NAME --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name $CODE_DEPLOY_GROUP_NAME --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$PROJECT_NAME.zip
