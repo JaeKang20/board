@@ -49,3 +49,9 @@ dependencyManagement {
 	}
 }
 
+task makeExecutable(type: Exec) {
+	commandLine 'chmod', '+x', './scripts/deploy.sh'
+}
+
+tasks.build.dependsOn makeExecutable
+
