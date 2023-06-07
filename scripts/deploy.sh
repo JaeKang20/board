@@ -3,8 +3,6 @@
 REPOSITORY=/home/ec2-user/app2/step2
 PROJECT_NAME=inflearn #해당 위치에 properties에 작성한 프로젝트명과 동일하게 작성 *jar파일로 생성되는 인텔리제이 프로젝트명과 동일해야함.
 
-echo "> 경로 이동"
-cd $REPOSITORY
 echo "> Build 파일 복사"
 cp $REPOSITORY/zip/build/libs/*.jar $REPOSITORY/
 
@@ -26,9 +24,6 @@ JAR_NAME=$(ls -tr $REPOSITORY/| grep jar |tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
-
-echo "> $JAR_NAME 에 실행권한 추가"
-chmod +x $JAR_NAME
 
 echo "> $JAR_NAME 실행"
 
