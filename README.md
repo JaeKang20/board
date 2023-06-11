@@ -2,7 +2,7 @@
 
 ## 최재강 개발자의 포트폴리오
 🔥AWS로 서버배포한 환경 바로 가보기 클릭: 
-http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com:8080/
+http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com
 
 <img width="500"  height="500" alt="Snipaste_2023-06-01_22-09-09" src="https://github.com/JaeKang20/board/assets/100588597/80373f90-c1c3-45de-960a-f67963d29ff1">
 <img width="500"  height="500" alt="Snipaste_2023-06-01_22-09-23" src="https://github.com/JaeKang20/board/assets/100588597/78bee8df-b7a8-4267-9ba0-d0ef048a8dc4">
