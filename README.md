@@ -4,7 +4,10 @@
 🔥AWS로 서버배포한 환경 바로 가보기 클릭: 
 http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com
 
-<img width="500"  height="500"alt="Snipaste_2023-06-12_18-47-48" src="https://github.com/JaeKang20/board/assets/100588597/8a116888-bef9-4d08-823e-c909392ed609">
+
+<img width="500"  height="500" alt="Snipaste_2023-06-12_18-47-48" src="https://github.com/JaeKang20/board/assets/100588597/7b6c7406-2cbf-4373-aeb5-51c7697b30c9">
+
+
 <img width="500"  height="500" alt="Snipaste_2023-06-01_22-09-23" src="https://github.com/JaeKang20/board/assets/100588597/78bee8df-b7a8-4267-9ba0-d0ef048a8dc4">
 
 
