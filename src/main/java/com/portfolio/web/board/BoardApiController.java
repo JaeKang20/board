@@ -1,7 +1,6 @@
 package com.portfolio.web.board;
 
 import com.portfolio.config.SessionConst;
-import com.portfolio.config.argumentresolver.AdminAuthorize;
 import com.portfolio.config.argumentresolver.LoginUserAuthorize;
 import com.portfolio.domain.*;
 import com.portfolio.service.*;
@@ -89,8 +88,7 @@ public class BoardApiController {
         return "redirect:/";
     }
 
-    @AdminAuthorize // "ADMIN" 권한을 가진 사용자만 접근 가능
-    @PostMapping("/{boardId}")
+        @PostMapping("/{boardId}")
     public String delete(@PathVariable Long boardId, @LoginUserAuthorize Member loginUser) {
         Board board = boardService.findById(boardId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
