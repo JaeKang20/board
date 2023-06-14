@@ -4,21 +4,28 @@
 🔥AWS로 서버배포한 환경 바로 가보기 클릭: 
 http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com
 
-<img width="500"  height="500" alt="Snipaste_2023-06-01_22-09-09" src="https://github.com/JaeKang20/board/assets/100588597/80373f90-c1c3-45de-960a-f67963d29ff1">
+
+<img width="500"  height="500" alt="Snipaste_2023-06-12_18-47-48" src="https://github.com/JaeKang20/board/assets/100588597/7b6c7406-2cbf-4373-aeb5-51c7697b30c9">
+
+
 <img width="500"  height="500" alt="Snipaste_2023-06-01_22-09-23" src="https://github.com/JaeKang20/board/assets/100588597/78bee8df-b7a8-4267-9ba0-d0ef048a8dc4">
 
 
 
-**🔥기획의도**
+**🔥프로젝트 소개: 기획의도**
 
 ```
 - 이력서 활용 (포트폴리오 및 게시판)
-- 프론트·백엔드 기술환경 세팅 및 전체 기능 구현
+- 맡은 역할: 1인 프로젝트이다 보니 개발환경이나 소스코드는 모두 개인이서 하였습니다.
+- 소개할 기능: 게시판 CRUD, 댓글 CRUD
+- 좋아요 + 조회수에 기반한 랭킹 기능
+- CI & CD & AWS 연동
+
 ■  Restful API를 사용한 백엔드 간의 데이터 송수신
 ■  MVC 패턴 학습
 
 ```
-**🔥기능 분석**
+**🔥기능 설계**
 
 ``` 
 ◼ 회원 기능
@@ -52,12 +59,13 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com
 **🔥시스템 구성**
 
 ```
-1.프로젝트 - 최재강
+**1.프로젝트 - 최재강**
 1) 포트폴리오 pdf
 2) 깃허브 URL
-3) 프로젝트
+3) 프로젝트 - 게시판
+4) 이력서 (랠릿)
 
-2.프로젝트
+**2.프로젝트**
   -회원가입, 로그인
   -일반 회원, 관리자 회원 구분
   
@@ -74,14 +82,15 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com
 
 ```
 - JAVA 17
-- Spring Boot 2.5
+- Spring Boot 2.5 (MVC)
 - Junit 4
 - DB: MySQL
 - html
 - JS
 - BootStrap
-- AWS EC2
-- AWS RDS
+- AWS EC2, RDS, S3, CodeDeploy
+- Github Actions
+- Enginx
 ```
 
 **🔥테이블**
