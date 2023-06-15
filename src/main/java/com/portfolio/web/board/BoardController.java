@@ -73,21 +73,18 @@ public class BoardController {
         model.addAttribute("board", board);
         model.addAttribute("replies", replies);
 
-        // 날짜 포맷 변경
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 a hh시 mm분", Locale.KOREAN);
-
-        // registerDate가 null이 아닌지 확인
-        String formattedRegisterDate = "";
+        // registerDate를 가져와서 모델에 추가
         if (board.getRegisterDate() != null) {
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS");
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 a hh시 mm분", Locale.KOREAN);
             LocalDateTime parsedDate = LocalDateTime.parse(board.getRegisterDate(), inputFormatter);
-            formattedRegisterDate = parsedDate.format(outputFormatter);
+            String formattedRegisterDate = parsedDate.format(outputFormatter);
+            model.addAttribute("registerDate", formattedRegisterDate);
         }
-
-        model.addAttribute("formattedRegisterDate", formattedRegisterDate);
 
         return "board";
     }
+
 
 
 
