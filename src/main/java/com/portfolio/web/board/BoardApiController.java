@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,12 +46,17 @@ public class BoardApiController {
         Board savedBoard = boardService.save(notSaveBoard);
         Long boardId = savedBoard.getBoardId();
 
+        // 날짜 포맷 변경
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
+        String formattedRegisterDate = savedBoard.getRegisterDate().format(String.valueOf(outputFormatter));
 
         Map<String, Object> response = new HashMap<>();
         response.put("boardId", boardId);
+        response.put("registerDate", formattedRegisterDate);
 
         return ResponseEntity.ok(response);
     }
+
     @PostMapping(value = "/{boardId}/edit", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<?> edit(@PathVariable Long boardId, @RequestBody BoardUpdateDto requestBody) {
         String title = requestBody.getTitle(); // 클라이언트로부터 받은 JSON 데이터에서 "title" 필드 값을 추출
