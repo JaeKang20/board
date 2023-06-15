@@ -10,6 +10,7 @@ import com.portfolio.web.dto.BoardUpdateDto;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.time.format.DateTimeFormatter;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class BoardApiController {
 
     @PostMapping(value = "/add", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<?> writeBoard(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
-                                        @ModelAttribute Board board, RedirectAttributes redirectAttributes,
+                                        @ModelAttribute Board board,
                                         @RequestBody Board requestBody) {
         String title = requestBody.getTitle();
         String content = requestBody.getContent();
@@ -44,18 +45,21 @@ public class BoardApiController {
         notSaveBoard.setMember(loginMember);
 
         Board savedBoard = boardService.save(notSaveBoard);
-        Long boardId = savedBoard.getBoardId();
 
-        // 날짜 포맷 변경
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
-        String formattedRegisterDate = savedBoard.getRegisterDate().format(String.valueOf(outputFormatter));
+        if (savedBoard == null) {
+            // 저장에 실패한 경우에 대한 처리
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+        Long boardId = savedBoard.getBoardId();
 
         Map<String, Object> response = new HashMap<>();
         response.put("boardId", boardId);
-        response.put("registerDate", formattedRegisterDate);
 
         return ResponseEntity.ok(response);
     }
+
+
 
     @PostMapping(value = "/{boardId}/edit", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<?> edit(@PathVariable Long boardId, @RequestBody BoardUpdateDto requestBody) {
