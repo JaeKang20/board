@@ -34,7 +34,6 @@ public class BoardApiController {
 
     @PostMapping(value = "/add", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<?> writeBoard(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
-                                        @ModelAttribute Board board,
                                         @RequestBody Board requestBody) {
         String title = requestBody.getTitle();
         String content = requestBody.getContent();
