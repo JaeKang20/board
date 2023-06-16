@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ProjectController {
     @GetMapping("/project1")
-    public String project1(){
+    public String project() {
         return "/project1";
     }
 }
