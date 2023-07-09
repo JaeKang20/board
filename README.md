@@ -1,4 +1,4 @@
-# 🔥 [프로젝트 확인](http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com)
+# 🔥 [프로젝트 확인](http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com/project1)
 <img src="readMeImg/img.png" alt="img" width="300" height="auto">
 
 ## 1. 😁 서비스 소개
