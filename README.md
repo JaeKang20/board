@@ -1,33 +1,40 @@
-# board
+# 🔥 [프로젝트 확인](http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com)
+<img src="readMeImg/img.png" alt="img" width="300" height="auto">
 
-## 최재강 개발자의 포트폴리오
-🔥AWS로 서버배포한 환경 바로 가보기 클릭: 
-http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com
-
-
-<img width="500"  height="500" alt="Snipaste_2023-06-12_18-47-48" src="https://github.com/JaeKang20/board/assets/100588597/7b6c7406-2cbf-4373-aeb5-51c7697b30c9">
-
-
-<img width="500"  height="500" alt="Snipaste_2023-06-01_22-09-23" src="https://github.com/JaeKang20/board/assets/100588597/78bee8df-b7a8-4267-9ba0-d0ef048a8dc4">
+## 1. 😁 서비스 소개
+ 소개할 기능: 관리자모드 · 유저모드 \
+ 사용자 제어 가능한 게시판 CRUD, 댓글 CRUD \
+ 좋아요 + 조회수에 기반한 랭킹 기능 \
 
 
 
-**🔥프로젝트 소개: 기획의도**
+## 2. 👬 팀원 소개
+* [재강](https://github.com/JaeKang20)
+**🔥1인 프로젝트**
 
-```
-- 이력서 활용 (포트폴리오 및 게시판)
-- 맡은 역할: 1인 프로젝트이다 보니 개발환경이나 소스코드는 모두 개인이서 하였습니다.
-- 소개할 기능: 게시판 CRUD, 댓글 CRUD
-- 좋아요 + 조회수에 기반한 랭킹 기능
-- CI & CD & AWS 연동
 
-■  Restful API를 사용한 백엔드 간의 데이터 송수신
-■  MVC 패턴 학습
+What did I do
 
-```
-**🔥기능 설계**
+■ 프론트·백엔드 기술환경 세팅 및 전체 기능 구현
 
-``` 
+What did I concern about
+
+■ Restful API를 사용한 백엔드 간의 데이터 송수신
+■ MVC 패턴을 잘지키면서 코딩했는가?
+■ 사용자별 권한 관리가 잘 되어 있는가? 
+    (관리자/유저)
+■ 조건 검색별 출력되는 우선 순위를 지켰는가?
+■ 버전을 어떻게 구분하여 관리할 것인가?
+
+What did you want to do
+
+■ 웹서비스의 배포 모든 과정을 경험해보며 서버 인프라 지식을 익힌다.
+■ 웹서비스를 운영해보고 개발 지식을 동원하여 개선해본다. 
+
+
+## 3. 💻 핵심 기능
+
+
 ◼ 회원 기능
 ·회원가입,로그인 기능
 
@@ -53,37 +60,18 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com
 · 댓글 수정 권한은 글쓴이만 가능
 · 댓글 삭제 권한은 글쓴이와 관리자만 가능
 
-```
 
 
-**🔥시스템 구성**
 
-```
-**1.프로젝트 - 최재강**
-1) 포트폴리오 pdf
-2) 깃허브 URL
-3) 프로젝트 - 게시판
-4) 이력서 (랠릿)
+## 4. 🏬 프로젝트 구조
 
-**2.프로젝트**
-  -회원가입, 로그인
-  -일반 회원, 관리자 회원 구분
-  
-  ... 로그인 이후 ...
-  - 게시판 CRUD -
-  - 댓글 CRUD -
-  - 게시판 공지 -  
-  - 게시판 검색 -
-  - 게시판 페이징 -
-  - 게시판 신고하기 -
-```
+<img src="readMeImg/img_1.png" alt="img_1" width="400" height="auto">
 
-**🔥적용 기술 및 라이브러리**
+## 5. 🎮 기술 스택
 
-```
-- JAVA 17
-- Spring Boot 2.5 (MVC)
-- Junit 4
+
+- Spring Boot
+- Spring Data JPA
 - DB: MySQL
 - html
 - JS
@@ -91,19 +79,7 @@ http://ec2-43-200-120-235.ap-northeast-2.compute.amazonaws.com
 - AWS EC2, RDS, S3, CodeDeploy
 - Github Actions
 - Enginx
-```
 
-**🔥테이블**
-
-|      <b>    구분         |                                                                                                       <b>내용                                                                                                     |
-|:---------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|        로그인 관리    |  ·HandlerMethodArgumentResolver를 이용한 회원가입,<br>◦특정 페이지는 로그인한 회원만 접속                                                                            |
-|        게시글 관리    |     · CRUD, 조회수 기능    · 좋아요 기능 <br>    · 페이징 기능   <br>· 신고 기능                                                                                                                                                    · 댓글 기능|
-|      관리자 페이지    |      ◦특정 페이지는 관리자만 접속  <br>        ○게시글 조회수 top10 리스트      <br>      ○게시글 추천수 top10 리스트  <br>  ○게시글 신고 top10 리스트  <br>  · ADMIN 계정은 공지글 게시 가능  <br>   · ADMIN 계정은 모든 게시물 및<br> 댓글 삭제 가능    |
-
-
-
-**🔥ERD**
-
-<img width="800"  height="500" alt="데이터베이스" src="https://github.com/JaeKang20/board/assets/100588597/d50c96ad-b91c-4e3c-a316-0ec98e5358d7">
-
+## 6. ✏️ 추가 정보
+- [이메일 보내기](mailto:chkswordk123@naver.com)
+- [공부 기록 블로그](https://keyboardwarrior.tistory.com/)
